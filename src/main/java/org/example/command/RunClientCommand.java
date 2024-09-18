@@ -46,7 +46,7 @@ public class RunClientCommand implements Runnable {
             try {
                 var ignored = pool.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS);
             } catch (InterruptedException e) {
-                this.logger.error("Could not terminate thread pool.", e);
+                this.logger.error("Thread was interrupted while waiting for termination.", e);
             }
         }
     }
