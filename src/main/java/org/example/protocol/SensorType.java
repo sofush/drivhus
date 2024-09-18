@@ -14,11 +14,11 @@ public enum SensorType {
         this.value = value;
     }
 
-    public int toInt() {
+    int toInt() {
         return value;
     }
 
-    public static SensorType from(int value) {
+    static SensorType from(int value) {
         return Arrays.stream(SensorType.values())
                 .filter((variant) -> variant.toInt() == value)
                 .findFirst().orElse(SensorType.UNKNOWN);

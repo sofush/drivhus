@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.protocol.Message;
+import org.example.protocol.MessageTransferUtil;
 import org.example.protocol.SensorType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +53,7 @@ public class TcpClient implements Runnable, Closeable {
             var message = new Message(this.type, measurement);
 
             try {
-                message.send(this.socket);
+                MessageTransferUtil.send(this.socket, message);
             } catch (IOException e) {
                 this.logger.error("Could not send message to server.", e);
                 break;

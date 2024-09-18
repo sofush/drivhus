@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.protocol.Message;
+import org.example.protocol.MessageTransferUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,7 +61,7 @@ public class ClientHandler implements Runnable, Closeable {
     public void run() {
         while (!Thread.interrupted() && client.isConnected() && !client.isClosed()) {
             try {
-                Message message = Message.receive(client);
+                Message message = MessageTransferUtil.receive(client);
                 this.handleMessage(message);
             } catch (IOException e) {
                 this.logger.info("Client disconnected.");
